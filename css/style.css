@@ -1,0 +1,156 @@
+/*-- 
+Basic Reset--*/
+html, body, div, section, main, article, aside, p, h1, h2, h3, h4, h5, h6, nav, footer, header, figure, blockquote {margin: 0;padding: 0;}
+/*-- 
+Document Styles 
+--*/
+:root {
+  --font: system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';
+  --charcoal: #222; /*-- sets variables under the :root element --*/
+  background-color: var(--charcoal); /*-- the var() function uses a variable --*/
+  --height: 8rem;
+}
+body {
+  color: var(--charcoal); /*-- uses a variable for text color --*/
+  font-family: var(--font); /*-- uses a variable for font-family --*/
+  padding: 0 3rem;
+}
+nav, footer { /*-- common styles for nav and footer --*/
+  background-color: #d1d1d1;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+nav { /*-- sets navbar height --*/
+  height: var(--height);
+}
+footer { /*-- ensures footer is always twice as tall as navbar --*/
+  height: calc(var(--height) * 2); /*-- calc() uses math operators --*/
+}
+h1 {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font: 800 1.8rem/1.2 var(--font); /*-- style, variant, weight, size/line, family --*/
+  color: rgba(255, 0, 255, 0.67); /*-- rgba color is 0 to 255 red, green, blue, and 0 to 1 alpha --*/
+}
+h1 span {
+  font-weight: 400; /*-- accepts values between 100 and 900 in increments of 100 --*/
+}
+em {
+  font-weight: 700; /*-- 700 weight is 'heavier' than 400 weight --*/
+  text-transform: capitalize; /*-- capitalizes only the first letters of words --*/
+  opacity: 0.67; /*-- sets the alpha channel value; accepts a decimal between 0 and 1 --*/
+}
+/*-- children defaults --*/
+.grid-item {
+  background-color: aliceblue;
+  border: 4px solid royalblue;
+  padding: 1rem;
+  margin: 1rem;
+}
+/*-- Regular layout method, targets children --*/
+
+/*--------------
+- GRID LAYOUT  -
+----------------*/
+.grid-container {
+  border: 2px dashed fuchsia;
+
+  /*-- enables grid layout --*/
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: 250px 100px 300px;
+  justify-items: center; 
+  align-items: center; 
+  
+  /*-- with auto-fit and minmax() --*/
+  /* grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); */
+  /* grid-template-rows: 250px 100px 10%;
+  align-items: stretch; */
+  /*-- with minmax and auto-fill--*/
+  /* grid-template-rows:
+    minmax(100px, max-content)
+    repeat(auto-fill, 200px) 20%;  */
+}
+/* -- media queries for grid-- */
+@media screen and (min-width: 550px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 900px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .grid-container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+/*-- 
+GRID AREA LAYOUT METHOD
+
+.grid-container {
+  display: grid;
+  grid-gap: .1rem;
+  grid-template-areas:
+                      "head head head"
+                      "feat1 feat2 feat3"
+                      "wall blog1 blog1"
+                      "wall blog2 blog2"
+                      "wall blog3 blog3"
+                      "wall blog4 blog4"
+                      "close1 close1 close2"
+                      "foot foot foot";
+}
+.grid-container > p:nth-child(1) {
+  grid-area: head;
+}
+.grid-container > p:nth-child(2) {
+  grid-area: feat1;
+}
+.grid-container > p:nth-child(3) {
+  grid-area: feat2;
+}
+.grid-container > p:nth-child(4) {
+  grid-area: feat3;
+}
+.grid-container > p:nth-child(5) {
+  grid-area: wall;
+}
+.grid-container > p:nth-child(6) {
+  grid-area: blog1;
+}
+.grid-container > p:nth-child(7) {
+  grid-area: blog2;
+}
+.grid-container > p:nth-child(8) {
+  grid-area: blog3;
+}
+.grid-container > p:nth-child(9) {
+  grid-area: blog4;
+}
+.grid-container > p:nth-child(10) {
+  grid-area: close1;
+}
+.grid-container > p:nth-child(11) {
+  grid-area: close2;
+}
+.grid-container > p:nth-child(12) {
+  grid-area: foot;
+}
+ ---*/
