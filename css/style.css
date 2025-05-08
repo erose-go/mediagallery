@@ -43,37 +43,132 @@ em {
   text-transform: capitalize; /*-- capitalizes only the first letters of words --*/
   opacity: 0.67; /*-- sets the alpha channel value; accepts a decimal between 0 and 1 --*/
 }
+
+* {box-sizing:border-box}
+
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.grid-item {
+  max-width: 220px;
+  width: 220px;
+}
+
+
+
 /*-- children defaults --*/
 .grid-item {
   background-color: aliceblue;
   border: 4px solid royalblue;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 /*-- Regular layout method, targets children --*/
 
 /*--------------
 - GRID LAYOUT  -
 ----------------*/
-.grid-container {
-  border: 2px dashed fuchsia;
-
-  /*-- enables grid layout --*/
+.grid-4x3 {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  grid-template-rows: 250px 100px 300px;
-  justify-items: center; 
-  align-items: center; 
-  
-  /*-- with auto-fit and minmax() --*/
-  /* grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); */
-  /* grid-template-rows: 250px 100px 10%;
-  align-items: stretch; */
-  /*-- with minmax and auto-fill--*/
-  /* grid-template-rows:
-    minmax(100px, max-content)
-    repeat(auto-fill, 200px) 20%;  */
+  grid-template-columns: repeat(4, 1fr); /* 3 equal-width columns */
+  grid-template-rows: repeat(3, auto);  /* 4 rows, height auto based on content */
+  gap: auto;
+  padding: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.grid-item {
+  background-color: #dff0ff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  font-weight: bold;
 }
 /* -- media queries for grid-- */
 @media screen and (min-width: 550px) {
